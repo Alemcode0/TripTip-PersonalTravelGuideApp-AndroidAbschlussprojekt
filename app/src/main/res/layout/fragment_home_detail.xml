@@ -57,52 +57,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_home_detail_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:text="TextView"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_likes"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_h_detail" />
-
-    <TextView
-        android:id="@+id/tv_likes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="4.5"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_star"
-        app:layout_constraintEnd_toStartOf="@+id/iv_star"
-        app:layout_constraintTop_toBottomOf="@+id/iv_h_detail"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/iv_star"
-        android:layout_width="22dp"
-        android:layout_height="18dp"
-        android:layout_marginEnd="16dp"
-        android:src="@android:drawable/btn_star_big_on"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.166" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
         android:text="About"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_home_detail_name" />
 
     <LinearLayout
         android:id="@+id/iv_container"
@@ -152,6 +128,44 @@
         android:layout_marginEnd="8dp"
         android:text="It's rare that we'd consider an urban area as beautiful as anything found in nature, but if any city gets our vote, it's Paris. From the Seine to the pastel sunsets behind the Eiffel Tower to the Champs-Élysées all lit up at night, Paris, je t'aime."
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="236dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="40dp"
+        android:numStars="5"
+
+        android:progressBackgroundTint="@color/black"
+        android:progressTint="@android:color/holo_orange_dark"
+        android:rating="4"
+
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+
+        android:stepSize="1"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/tv_home_detail_name"
+        app:layout_constraintTop_toBottomOf="@+id/iv_h_detail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="40dp"
+        android:text="  "
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/ratingBar">
+
+    </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

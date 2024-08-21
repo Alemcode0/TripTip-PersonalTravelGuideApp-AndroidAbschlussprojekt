@@ -4,12 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.example.abschlissprojekt.data.models.Destination
 import com.example.abschlissprojekt.databinding.ListItemHomeBinding
 import com.example.abschlissprojekt.ui.HomeFragmentDirections
+
 
 class DestinationAdapter(private var dataset: List<Destination>
 ) : RecyclerView.Adapter<DestinationAdapter.DestinationViewHolder>() {
@@ -32,10 +31,9 @@ class DestinationAdapter(private var dataset: List<Destination>
         holder.binding.tvPlaceName.text = currentDestination.name
 
         holder.binding.listItemHome.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment()
-            holder.binding.listItemHome.findNavController().navigate(action)
-
-
+            val action = HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment(
+                currentDestination.name, currentDestination.imageUrl )
+            holder.itemView.findNavController().navigate(action)
         }
     }
 

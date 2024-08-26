@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.MapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-</FrameLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="132dp"
+        android:layout_height="127dp"
+        android:layout_margin="8dp"
+        android:elevation="14dp"
+        app:cardBackgroundColor="#8BF6D985"
+        app:cardCornerRadius="70dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mapFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp">
+
+            <RadioButton
+                android:id="@+id/normalBtn"
+                android:layout_width="84dp"
+                android:layout_height="25dp"
+                android:checked="true"
+                android:text="Normal"
+                android:textColor="@color/black"
+                app:buttonTint="@color/black" />
+
+            <RadioButton
+                android:id="@+id/satelliteBtn"
+                android:layout_width="96dp"
+                android:layout_height="25dp"
+                android:text="Satellite"
+                android:textColor="@color/black"
+                app:buttonTint="@color/black" />
+
+            <RadioButton
+                android:id="@+id/hybridBtn"
+                android:layout_width="84dp"
+                android:layout_height="25dp"
+                android:text="Hybrid"
+                android:textColor="@color/black"
+                app:buttonTint="@color/black" />
+
+            <RadioButton
+                android:id="@+id/terrainBtn"
+                android:layout_width="84dp"
+                android:layout_height="25dp"
+                android:text="Terrain"
+                android:textColor="@color/black"
+                app:buttonTint="@color/black" />
+        </RadioGroup>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

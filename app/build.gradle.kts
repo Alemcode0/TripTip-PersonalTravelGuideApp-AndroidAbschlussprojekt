@@ -44,10 +44,11 @@ android {
 dependencies {
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
     implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
     val retrofitVersion = "2.9.0"
     val roomVersion = "2.6.0"
 
-    //implementation ("com.google.android.gms:play-services-maps:17.0.0")
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -57,8 +58,10 @@ dependencies {
     testImplementation(libs.junit)
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation ("androidx.fragment:fragment-ktx:1.8.2")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 
     //Retrofit und Moshi
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
@@ -77,6 +80,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     //Material Design
-    //implementation ("com.google.android.material:material:1.3.0-alpha03")
+    implementation ("com.google.android.material:material:1.3.0-alpha03")
+    implementation ("com.google.android.material:material:1.9.0")
 
 }

@@ -17,21 +17,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        app:layout_constraintTop_toBottomOf="@+id/searchbar"
         tools:listitem="@layout/list_item_home">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <SearchView
-        android:id="@+id/search_bar"
-        android:layout_width="217dp"
-        android:layout_height="31dp"
-        android:background="#9518B0D0"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchbar"
+        android:layout_width="260dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="100dp"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#9518B0D0" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView2"
@@ -41,7 +49,7 @@
         app:cardCornerRadius="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintStart_toEndOf="@+id/search_bar"
+        app:layout_constraintStart_toEndOf="@id/textView"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -65,7 +73,6 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/materialCardView2"
-        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

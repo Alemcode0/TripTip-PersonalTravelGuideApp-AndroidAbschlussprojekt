@@ -12,7 +12,8 @@ object DestinationExampleData {
                 "including Sagrada Familia and Park Güell. From the historic Gothic Quarter to the Picasso museum, " +
                 "it's a mecca for creative inspiration.",
         imageUrl = R.drawable.barcelonaparkguell,
-        location = "Europa"
+        location = "Europa",
+        favourite = false
     )
     val Destination2 = Destination(
         id = 2,
@@ -21,7 +22,8 @@ object DestinationExampleData {
                 "From crystal-clear water and secluded beaches to incredible local wine and an endlessly rich cultural history, " +
                 "there's so much to experience in Hvar.",
         imageUrl = R.drawable.travelcroatia,
-        location = "Europa"
+        location = "Europa",
+        favourite = false
     )
 
     val Destination3 = Destination(
@@ -31,7 +33,8 @@ object DestinationExampleData {
                 "but if any city gets our vote, it's Paris. From the Seine to the pastel sunsets behind the " +
                 "Eiffel Tower to the Champs-Élysées all lit up at night—Paris, je t'aime.",
         imageUrl = R.drawable.triptoparis,
-        location = "Europa"
+        location = "Europa",
+        favourite = false
     )
 
     val Destination4 = Destination(
@@ -40,7 +43,8 @@ object DestinationExampleData {
         description = "If staying in an overwater bungalow isn't on your bucket list, it should be. At lots of hotels in the region, " +
                 "like the Four Seasons Resort Bora Bora, you can reserve one with its own plunge pool.",
         imageUrl = R.drawable.travelborabora,
-        location = "Europa"
+        location = "Europa",
+        favourite = false
     )
     val Destination5 = Destination(
         id = 5,
@@ -48,7 +52,8 @@ object DestinationExampleData {
         description = "Painted almost entirely in blue and white, this Mediterranean village is a coastal decor dream. " +
                 "The town is set on a steep cliff, so you can take in the beauty (and breeze) of the sea while perusing local artisanal goods.",
         imageUrl = R.drawable.traveltunisia,
-        location = "Africa"
+        location = "Africa",
+        favourite = false
     )
     val Destination6 = Destination(
         id = 6,
@@ -58,7 +63,8 @@ object DestinationExampleData {
                 "Depending on where you explore, you can see the many breathtaking cliffs, waterfalls, and glacial fjords. " +
                 "For a super remote and design-friendly experience, visit the Fogo Island Inn.",
         imageUrl = R.drawable.travelcanada,
-        location = "North America"
+        location = "North America",
+        favourite = false
     )
     val Destination7 = Destination(
         id = 7,
@@ -66,7 +72,8 @@ object DestinationExampleData {
         description = "This coastal town on the tip of Santorini is packed with whitewashed houses on rugged clifftops that overlook the water. " +
                 "It also boasts Oia Castle, which has amazing sunset views.",
         imageUrl = R.drawable.travelgreece,
-        location = "Europa"
+        location = "Europa",
+        favourite = false
     )
 
     val Destination8 = Destination(
@@ -76,7 +83,8 @@ object DestinationExampleData {
                 "and it's just as otherworldly in real life. It's majestic, wild, and tranquil all at the same time thanks to its towering peaks, " +
                 "abundant flora, and running brooks.",
         imageUrl = R.drawable.travelchaina,
-        location = "Asia"
+        location = "Asia",
+        favourite = false
     )
 
     val Destination9 = Destination(
@@ -85,13 +93,15 @@ object DestinationExampleData {
         description = "This bluebell forest in England alone is worth a trip across the Atlantic. Teatime with homemade scones and " +
                 "fresh jam and clotted cream is an added bonus!",
         imageUrl = R.drawable.travelengland,
-        location = "Europa"
+        location = "Europa",
+        favourite = false
     )
     val Destination10 = Destination(
         id = 10,
         name = "Antelope Canyon, Arizona",
         description = "This Navajo canyon was completely shaped by wind and water. When shafts of light beam in, it's total magic.",
         imageUrl = R.drawable.travelnamerica,
-        location = "North America"
+        location = "North America",
+        favourite = false
     )
 }

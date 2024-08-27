@@ -20,7 +20,7 @@ abstract class DestinationDatabase: RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         DestinationDatabase::class.java,
-                        "destination_database1"
+                        "destination_database"
                     ).build()
                 }
                 return instance

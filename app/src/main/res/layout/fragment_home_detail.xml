@@ -58,13 +58,15 @@
 
     <TextView
         android:id="@+id/tv_home_detail_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_h_detail" />
 
@@ -73,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="About"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,10 +125,11 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="367dp"
-        android:layout_height="91dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="It's rare that we'd consider an urban area as beautiful as anything found in nature, but if any city gets our vote, it's Paris. From the Seine to the pastel sunsets behind the Eiffel Tower to the Champs-Élysées all lit up at night, Paris, je t'aime."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -134,36 +138,35 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="236dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="233dp"
+        android:layout_height="44dp"
+
+        android:layout_marginEnd="204dp"
+        android:layout_marginBottom="30dp"
         android:numStars="5"
 
         android:progressBackgroundTint="@color/black"
         android:progressTint="@android:color/holo_orange_dark"
-        android:rating="4"
 
+        android:rating="4"
         android:scaleX="0.5"
         android:scaleY="0.5"
-
         android:stepSize="1"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintStart_toEndOf="@+id/tv_home_detail_name"
-        app:layout_constraintTop_toBottomOf="@+id/iv_h_detail"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_home_detail_name" />
 
     <TextView
         android:id="@+id/tv_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="40dp"
         android:text="  "
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintHorizontal_bias="0.339"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/ratingBar">
 

@@ -40,9 +40,9 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.abschlissprojekt.ui.FavoriteFragment"
+        android:name="com.example.abschlissprojekt.ui.FavouriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favourite" />
     <fragment
         android:id="@+id/profileSettingFragment"
         android:name="com.example.abschlissprojekt.ui.ProfileSettingFragment"

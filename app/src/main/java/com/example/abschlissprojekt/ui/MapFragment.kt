@@ -159,7 +159,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         val markerOptions = MarkerOptions()
             .position(latLng)
-            .title("Germany")
+            .title("")
             .snippet(getAdress(latLng.latitude, latLng.longitude))
             .draggable(true)
             .visible(true)
@@ -241,6 +241,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         binding = FragmentMapBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -11,11 +11,12 @@
         android:id="@+id/rv_favorite"
         android:layout_width="391dp"
         android:layout_height="803dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_item_favorite">
+        tools:listitem="@layout/list_item_favourite">
 
     </androidx.recyclerview.widget.RecyclerView>
 

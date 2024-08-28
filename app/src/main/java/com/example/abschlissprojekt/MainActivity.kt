@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         deleteDatabase("destination_database")
         binding = ActivityMainBinding.inflate(layoutInflater)
-        //if (!Places.isInitialized()) { Places.initialize(applicationContext, key) }
         setContentView(binding.root)
 
         val navHost =

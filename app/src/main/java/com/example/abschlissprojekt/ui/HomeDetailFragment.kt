@@ -18,6 +18,7 @@ class HomeDetailFragment : Fragment() {
     private lateinit var binding: FragmentHomeDetailBinding
     private val viewModel: MainViewModel by activityViewModels()
     private val args: HomeDetailFragmentArgs by navArgs()
+    private lateinit var imageUrls: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +37,35 @@ class HomeDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val stringResource = args.myString
-        val imageResource = args.destinationImage
+        val imageResource1 = args.destinationImage1
+        val imageResource2 = args.destinationImage2
+        val imageResource3 = args.destinationImage3
+        val imageResource4 = args.destinationImage4
+        val imageResource5 = args.destinationImage5
 
         binding.tvHomeDetailName.text = stringResource
-        binding.ivHomeDetail.setImageResource(imageResource)
+        binding.ivHomeDetail.setImageResource(imageResource1)
+        binding.ivGallery1.setImageResource(imageResource2)
+        binding.ivGallery2.setImageResource(imageResource3)
+        binding.ivGallery3.setImageResource(imageResource4)
+        binding.ivGallery4.setImageResource(imageResource5)
+
+        binding.ivGallery1.setOnClickListener {
+            binding.ivHomeDetail.setImageResource(imageResource2)
+        }
+
+        binding.ivGallery2.setOnClickListener {
+            binding.ivHomeDetail.setImageResource(imageResource3)
+        }
+
+        binding.ivGallery3.setOnClickListener {
+            binding.ivHomeDetail.setImageResource(imageResource4)
+        }
+
+        binding.ivGallery4.setOnClickListener {
+            binding.ivHomeDetail.setImageResource(imageResource5)
+        }
+
         binding.ivBackIcon.setOnClickListener {
             this.findNavController().navigateUp()
         }

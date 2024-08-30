@@ -79,12 +79,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_home_detail_name" />
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/iv_container"
-        android:layout_width="232dp"
+        android:layout_width="225dp"
         android:layout_height="76dp"
         android:layout_marginTop="340dp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,32 +91,39 @@
 
         <ImageView
             android:id="@+id/iv_gallery1"
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:scaleType="centerCrop"
             android:src="@drawable/triptoparis" />
 
         <ImageView
             android:id="@+id/iv_gallery2"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="61dp"
             android:layout_weight="1"
+            android:scaleType="centerCrop"
             android:src="@drawable/triptoparis" />
 
         <ImageView
             android:id="@+id/iv_gallery3"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="116dp"
             android:layout_weight="1"
+            android:scaleType="centerCrop"
             android:src="@drawable/triptoparis" />
 
         <ImageView
             android:id="@+id/iv_gallery4"
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="170dp"
             android:layout_weight="1"
+            android:scaleType="centerCrop"
             android:src="@drawable/triptoparis" />
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/textView6"

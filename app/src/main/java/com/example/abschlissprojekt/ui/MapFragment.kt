@@ -29,7 +29,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var binding: FragmentMapBinding
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private var currentLocation: Location? = null
+    private lateinit var currentLocation: Location
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,104 +39,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }!!
         fetchLocation()
 
-//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
-//
-//        val locationPermissionRequest = registerForActivityResult(
-//            ActivityResultContracts.RequestMultiplePermissions()
-//        ) { permissions ->
-//            when {
-//                permissions.getOrDefault(
-//                    Manifest.permission.ACCESS_FINE_LOCATION,
-//                    false
-//                ) || permissions.getOrDefault(
-//                    Manifest.permission.ACCESS_COARSE_LOCATION, false
-//                ) -> {
-//                    Toast.makeText(
-//                        requireContext(), "Location access granted", Toast.LENGTH_SHORT
-//                    ).show()
-//
-//                    if (LocationManagerCompat.isLocationEnabled(requireContext().getSystemService(
-//                            LOCATION_SERVICE) as LocationManager)) {
-//                        if (ActivityCompat.checkSelfPermission(
-//                                requireContext(),
-//                                Manifest.permission.ACCESS_FINE_LOCATION
-//                            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                                requireContext(),
-//                                Manifest.permission.ACCESS_COARSE_LOCATION
-//                            ) != PackageManager.PERMISSION_GRANTED
-//                        ) {
-//                            return@registerForActivityResult
-//                        }
-//                        fusedLocationProviderClient.getCurrentLocation(
-//                            Priority.PRIORITY_BALANCED_POWER_ACCURACY,
-//                            CancellationTokenSource().token
-//                        ).addOnCompleteListener {
-//                            val location = "Latitude: ${it.result.latitude}\nLongitude: ${it.result.longitude}"
-//                            //binding.textView.text = location // falls TextView vorhanden ist
-//                        }
-//                    } else {
-//                        Toast.makeText(
-//                            requireContext(), "Please turn ON the location.",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                        createLocationRequest()
-//                    }
-//                }
-//                else -> {
-//                    Toast.makeText(requireContext(), "No location access", Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        }
-//
-//        binding.floatingActionBtn.setOnClickListener {
-//            locationPermissionRequest.launch(
-//                arrayOf(
-//                    Manifest.permission.ACCESS_FINE_LOCATION,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION
-//                )
-//            )
-//        }
-//
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.mapFragment) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
     }
-//
-//    private fun createLocationRequest() {
-//        val locationRequest = LocationRequest.Builder(
-//            Priority.PRIORITY_HIGH_ACCURACY, 10000
-//        ).setMinUpdateIntervalMillis(5000).build()
-//
-//        val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
-//
-//        val client = LocationServices.getSettingsClient(requireContext())
-//        val task = client.checkLocationSettings(builder.build())
-//
-//        task.addOnSuccessListener{
-//
-//        }
-//
-//        task.addOnFailureListener { e ->
-//            if (e is ResolvableApiException) {
-//                try {
-//
-//                    e.startResolutionForResult(requireActivity(), 100)
-//                } catch (sendEx: java.lang.Exception) {
-//
-//                }
-//            }
-//        }
-//    }
-//    private fun isLocationEnabled(): Boolean {
-//        val locationManager = requireContext().getSystemService(LOCATION_SERVICE) as LocationManager
-//
-//        try {
-//            return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//    return false
-//    }
+
 
 
     override fun onMapReady(map: GoogleMap) {
@@ -183,6 +90,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 R.id.hybridBtn -> googleMap.mapType = GoogleMap.MAP_TYPE_HYBRID
                 R.id.terrainBtn -> googleMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
             }
+        }
+    }
+
+    fun moveToCurrentLocation() {
+        if (currentLocation != null) {
+            val latLng = LatLng(currentLocation!!.latitude, currentLocation!!.longitude)
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19f))
+        } else {
+            fetchLocation()
         }
     }
 

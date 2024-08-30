@@ -17,8 +17,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var destinationList = repository.allDestinations
 
     init {
-        //resetDatabase()
-        //val destinationDao = getDatabase(application).destinationDao
         repository = DestinationRepository(database)
         destinationList = repository.allDestinations
         insert()

@@ -4,14 +4,17 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abschlissprojekt.data.models.Destination
 import com.example.abschlissprojekt.databinding.ListItemHomeBinding
+import com.example.abschlissprojekt.ui.HomeDetailFragmentArgs
 import com.example.abschlissprojekt.ui.HomeFragmentDirections
 
 
 class DestinationAdapter(private var dataset: List<Destination>
 ) : RecyclerView.Adapter<DestinationAdapter.DestinationViewHolder>() {
+
 
     inner class DestinationViewHolder(val binding: ListItemHomeBinding):
         RecyclerView.ViewHolder(binding.root)
@@ -32,7 +35,13 @@ class DestinationAdapter(private var dataset: List<Destination>
 
         holder.binding.listItemHome.setOnClickListener {
             val action = HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment(
-                currentDestination.name, currentDestination.imageUrl )
+                currentDestination.name,
+                destinationImage1 = currentDestination.imageUrl,
+                destinationImage2 = currentDestination.imageUrl1,
+                destinationImage3 = currentDestination.imageUrl2,
+                destinationImage4 = currentDestination.imageUrl3,
+                destinationImage5 = currentDestination.imageUrl4
+            )
             holder.itemView.findNavController().navigate(action)
         }
     }
@@ -42,6 +51,4 @@ class DestinationAdapter(private var dataset: List<Destination>
         this.dataset = destinations
         notifyDataSetChanged()
     }
-
-
 }

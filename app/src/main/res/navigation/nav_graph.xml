@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/favoriteFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_homeDetailFragment"
             app:destination="@id/homeDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeDetailFragment"
@@ -35,22 +38,45 @@
             android:name="myString"
             app:argType="string" />
         <argument
-            android:name="destinationImage"
+            android:name="destinationImage1"
             app:argType="integer" />
+        <argument
+            android:name="destinationImage2"
+            app:argType="integer" />
+        <argument
+            android:name="destinationImage3"
+            app:argType="integer" />
+        <argument
+            android:name="destinationImage4"
+            app:argType="integer" />
+        <argument
+            android:name="destinationImage5"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_homeDetailFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
     </fragment>
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/favouriteFragment"
         android:name="com.example.abschlissprojekt.ui.FavouriteFragment"
-        android:label="fragment_favorite"
+        android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
     <fragment
-        android:id="@+id/profileSettingFragment"
-        android:name="com.example.abschlissprojekt.ui.ProfileSettingFragment"
-        android:label="ProfileSettingFragment"
-        tools:layout="@layout/fragment_profile_setting"/>
+        android:id="@+id/profileCommunityFragment"
+        android:name="com.example.abschlissprojekt.ui.ProfileCommunityFragment"
+        android:label="ProfileCommunityFragment"
+        tools:layout="@layout/fragment_profile_community">
+        <action
+            android:id="@+id/action_profileCommunityFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.abschlissprojekt.ui.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

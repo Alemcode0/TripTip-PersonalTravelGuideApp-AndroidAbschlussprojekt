@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.abschlissprojekt.data.models.Destination
 
 @Database(entities = [Destination::class], version = 1)

@@ -60,6 +60,7 @@ dependencies {
     testImplementation(libs.junit)
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation ("androidx.fragment:fragment-ktx:1.8.2")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

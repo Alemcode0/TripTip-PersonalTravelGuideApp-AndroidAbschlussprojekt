@@ -38,4 +38,16 @@ class DestinationRepository(private val database: DestinationDatabase) {
             }
         }
     }
+
+    suspend fun addFavourite(destination: Destination) {
+        database.destinationDao.addFavourite(destination)
+    }
+
+    suspend fun removeFavourite(destination: Destination) {
+        database.destinationDao.removeFavourite(destination)
+    }
+
+    suspend fun getAllFavourites(): List<Destination> {
+        return database.destinationDao.getAllFavourites()
+    }
 }

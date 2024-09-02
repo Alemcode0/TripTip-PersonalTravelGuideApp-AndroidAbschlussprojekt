@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.abschlissprojekt.MainViewModel
 import com.example.abschlissprojekt.R
+import com.example.abschlissprojekt.data.models.Destination
 import com.example.abschlissprojekt.databinding.FragmentHomeBinding
 import com.example.abschlissprojekt.databinding.FragmentHomeDetailBinding
 
@@ -81,5 +82,14 @@ class HomeDetailFragment : Fragment() {
                 else -> binding.tvRating.text = " "
             }
         }
+
+//        binding.cbHeart.setOnClickListener {
+//            val destination = Destination(
+//                name = "Destination Name",
+//                location = "Location",
+//                imageUrl = R.drawable.image
+//            )
+//            viewModel.addFavourite(destination)
+//        }
     }
 }

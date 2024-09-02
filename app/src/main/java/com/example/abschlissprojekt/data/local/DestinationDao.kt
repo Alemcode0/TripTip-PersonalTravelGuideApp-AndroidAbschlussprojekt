@@ -23,4 +23,13 @@ interface DestinationDao {
 
     @Query("DELETE FROM sqlite_sequence WHERE name = 'students'")
     suspend fun deletePrimaryKeyIndex()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addFavourite(destination: Destination)
+
+    @Delete
+    suspend fun removeFavourite(destination: Destination)
+
+    @Query("SELECT * FROM destination_table")
+    suspend fun getAllFavourites(): List<Destination>
 }

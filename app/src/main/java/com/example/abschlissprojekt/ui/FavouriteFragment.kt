@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.abschlissprojekt.MainViewModel
 import com.example.abschlissprojekt.R
 import com.example.abschlissprojekt.adapter.DestinationAdapter
 import com.example.abschlissprojekt.adapter.FavouriteAdapter
@@ -16,6 +18,7 @@ import com.example.abschlissprojekt.databinding.FragmentHomeBinding
 class FavouriteFragment : Fragment() {
 
     private lateinit var binding: FragmentFavouriteBinding
+    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +36,15 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val imageList = listOf<Destination>()
-        val adapter = FavouriteAdapter(imageList)
+        val adapter = FavouriteAdapter(emptyList())
 
         binding.rvFavorite.adapter = adapter
         binding.rvFavorite.setHasFixedSize(true)
+
+//        viewModel.allFavourites.observe(viewLifecycleOwner) { favourites ->
+//            val adapter = FavouriteAdapter(emptyList())
+//            adapter.setDestinations(favourites)
+//        }
 
 
     }

@@ -44,4 +44,5 @@ class HomeFragment : Fragment() {
             binding.rvHome.adapter = DestinationAdapter(it)
         }
     }
+
 }

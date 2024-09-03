@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.abschlissprojekt.MainViewModel
@@ -20,6 +22,7 @@ class HomeDetailFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
     private val args: HomeDetailFragmentArgs by navArgs()
     private lateinit var imageUrls: List<String>
+    private lateinit var destination: Destination
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,13 +86,40 @@ class HomeDetailFragment : Fragment() {
             }
         }
 
-//        binding.cbHeart.setOnClickListener {
-//            val destination = Destination(
-//                name = "Destination Name",
-//                location = "Location",
-//                imageUrl = R.drawable.image
-//            )
-//            viewModel.addFavourite(destination)
-//        }
+        destination = Destination(
+            name = "Favourite Destination",
+            description = "Description",
+            imageUrl = R.drawable.triptoparis,
+            imageUrl1 = R.drawable.travelparis1,
+            imageUrl2 = R.drawable.travelparis2,
+            imageUrl3 = R.drawable.travelparis3,
+            imageUrl4 = R.drawable.travelparis4,
+            location = "Location",
+            favourite = false
+        )
+
+
+        binding.cbHeart.setOnClickListener {
+            if (destination.favourite) {
+                destination.favourite = false
+                viewModel.removeFavourite(destination)
+                showToast("Destination removed from Favourites")
+            } else {
+                destination.favourite = true
+                viewModel.addFavourite(destination)
+                showToast("Destination added to Favourites")
+            }
+            updateFavouriteButton()
+        }
+        updateFavouriteButton()
     }
+
+    private fun updateFavouriteButton() {
+        binding.cbHeart.isChecked = destination.favourite
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
 }

@@ -5,12 +5,14 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/travel6"
     tools:context=".ui.FavouriteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite"
         android:layout_width="391dp"
         android:layout_height="803dp"
+        android:layout_marginTop="32dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -60,7 +60,11 @@
         android:id="@+id/favouriteFragment"
         android:name="com.example.abschlissprojekt.ui.FavouriteFragment"
         android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" />
+        tools:layout="@layout/fragment_favourite"/>
+        <action
+            android:id="@+id/action_favouriteFragment_to_homeDetailFragment"
+            app:destination="@+id/homeDetailFragment"/>
+
     <fragment
         android:id="@+id/profileCommunityFragment"
         android:name="com.example.abschlissprojekt.ui.ProfileCommunityFragment"

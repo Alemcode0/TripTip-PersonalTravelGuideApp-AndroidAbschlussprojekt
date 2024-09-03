@@ -50,4 +50,12 @@ class DestinationRepository(private val database: DestinationDatabase) {
     suspend fun getAllFavourites(): List<Destination> {
         return database.destinationDao.getAllFavourites()
     }
+
+    fun getFavourites(): LiveData<List<Destination>> {
+        return database.destinationDao.getFavourites()
+    }
+
+    suspend fun update(destination: Destination) {
+        database.destinationDao.update(destination)
+    }
 }

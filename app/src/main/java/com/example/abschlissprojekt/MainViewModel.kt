@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.abschlissprojekt.data.DestinationRepository
+import com.example.abschlissprojekt.data.local.DestinationDao
+import com.example.abschlissprojekt.data.local.DestinationDatabase
 import com.example.abschlissprojekt.data.local.DestinationDatabase.Companion.getDatabase
 import com.example.abschlissprojekt.data.models.Destination
 import kotlinx.coroutines.Job
@@ -15,6 +17,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val database = getDatabase(application)
     private var repository = DestinationRepository(database)
+    private val destinationDao: DestinationDao = getDatabase(application).destinationDao
+    val favouriteDestinations: LiveData<List<Destination>>
 
     var destinationList = repository.allDestinations
 
@@ -26,6 +30,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         destinationList = repository.allDestinations
         insert()
         loadFavourites()
+        favouriteDestinations = repository.getFavourites()
     }
 
     fun insert() =
@@ -56,5 +61,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             repository.removeFavourite(destination)
             loadFavourites() // Refresh list
         }
+    }
+
+    fun searchDestinations(query: String): LiveData<List<Destination>> {
+        return destinationDao.searchDestinations("%$query%")
+    }
+
+    fun updateDestination(destination: Destination) {
+        viewModelScope.launch {
+            repository.update(destination)
+        }
+    }
+
+    fun getAllDestinations() {
+        viewModelScope.launch {
+            repository.allDestinations
+        }
+
     }
 }

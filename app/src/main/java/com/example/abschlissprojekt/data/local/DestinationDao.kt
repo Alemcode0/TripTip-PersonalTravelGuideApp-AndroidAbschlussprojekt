@@ -32,4 +32,13 @@ interface DestinationDao {
 
     @Query("SELECT * FROM destination_table")
     suspend fun getAllFavourites(): List<Destination>
+
+    @Query("SELECT * FROM destination_table WHERE name LIKE :searchQuery OR location LIKE :searchQuery")
+    fun searchDestinations(searchQuery: String): LiveData<List<Destination>>
+
+    @Query("SELECT * FROM destination_table WHERE favourite = 1")
+    fun getFavourites(): LiveData<List<Destination>>
+
+    @Update
+    suspend fun update(destination: Destination)
 }

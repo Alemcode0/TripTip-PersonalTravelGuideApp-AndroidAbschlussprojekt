@@ -5,21 +5,46 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import coil.load
+import com.example.abschlissprojekt.MainActivity
 import com.example.abschlissprojekt.R
+import com.example.abschlissprojekt.databinding.FragmentCommunityStatusDetailBinding
 
 class CommunityStatusDetailFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding: FragmentCommunityStatusDetailBinding
+    //private val args: StatusDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community_status_detail, container, false)
+        binding = FragmentCommunityStatusDetailBinding.inflate(layoutInflater)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        (activity as MainActivity).supportActionBar?.title =
+//            args.name +
+//                    if (args.name.last() == 's') {
+//                        "' "
+//                    } else {
+//                        "'s "
+//                    } +
+//                    "Status"
+//
+//        binding.tvUsername.text = args.name
+////        val imageProfile = args.image
+//        binding.ivStatusDetailImg.load(args.image)
+//        binding.ivBackground.load(args.status)
+//        binding.iBtnBack.setOnClickListener {
+//            findNavController().navigateUp()
+//        }
+//
+    }
 }

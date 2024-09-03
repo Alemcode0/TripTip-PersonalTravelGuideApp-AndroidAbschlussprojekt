@@ -2,12 +2,14 @@ package com.example.abschlissprojekt.ui
 
 
 import android.content.pm.PackageManager
+import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.abschlissprojekt.R
@@ -61,6 +63,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             LatLng(currentLocation?.latitude ?: return, currentLocation?.longitude ?: return)
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19f))
 
+        setupMapUi()
+
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.mapFragment) as? SupportMapFragment
 
@@ -80,8 +84,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             )
             it.addMarker(markerOptions)
         }
+    }
 
-        //googleMap.addMarker(markerOptions)
+    private fun setupMapUi() {
+        // Set up the SearchView to listen for query submissions
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    searchLocation(it)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
 
         binding.radioGroup.setOnCheckedChangeListener { _, itemId: Int ->
             when (itemId) {
@@ -90,6 +109,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 R.id.hybridBtn -> googleMap.mapType = GoogleMap.MAP_TYPE_HYBRID
                 R.id.terrainBtn -> googleMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
             }
+        }
+    }
+
+    private fun searchLocation(query: String) {
+        val geocoder = Geocoder(requireContext())
+        val addressList: List<Address>? = geocoder.getFromLocationName(query, 1)
+        if (!addressList.isNullOrEmpty()) {
+            val address = addressList[0]
+            val latLng = LatLng(address.latitude, address.longitude)
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+            googleMap.addMarker(MarkerOptions().position(latLng).title(query))
         }
     }
 

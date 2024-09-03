@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.card.MaterialCardView
@@ -24,8 +24,8 @@
         android:layout_height="127dp"
         android:layout_margin="8dp"
         android:elevation="14dp"
-        app:cardBackgroundColor="#8BF6D985"
-        app:cardCornerRadius="70dp"
+        app:cardBackgroundColor="#9CB0EAF6"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/mapFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -71,6 +71,27 @@
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
         </RadioGroup>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchbar"
+        android:layout_width="296dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="9dp"
+        app:cardBackgroundColor="#7AFDE89E"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/black">
+
+        <SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6AACE9F6" />
 
     </com.google.android.material.card.MaterialCardView>
 

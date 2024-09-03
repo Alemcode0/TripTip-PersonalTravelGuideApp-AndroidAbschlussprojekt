@@ -6,19 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.abschlissprojekt.MainViewModel
-import com.example.abschlissprojekt.R
-import com.example.abschlissprojekt.adapter.DestinationAdapter
 import com.example.abschlissprojekt.adapter.FavouriteAdapter
 import com.example.abschlissprojekt.data.models.Destination
 import com.example.abschlissprojekt.databinding.FragmentFavouriteBinding
-import com.example.abschlissprojekt.databinding.FragmentHomeBinding
 
 class FavouriteFragment : Fragment() {
 
     private lateinit var binding: FragmentFavouriteBinding
     private val viewModel: MainViewModel by activityViewModels()
+    private lateinit var favouriteAdapter: FavouriteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,16 +33,19 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val imageList = listOf<Destination>()
-        val adapter = FavouriteAdapter(emptyList())
+        val favouriteAdapter = FavouriteAdapter(emptyList(), viewModel)
 
-        binding.rvFavorite.adapter = adapter
+        binding.rvFavorite.adapter = favouriteAdapter
         binding.rvFavorite.setHasFixedSize(true)
 
-//        viewModel.allFavourites.observe(viewLifecycleOwner) { favourites ->
-//            val adapter = FavouriteAdapter(emptyList())
-//            adapter.setDestinations(favourites)
-//        }
+        viewModel.allFavourites.observe(viewLifecycleOwner) { favourites ->
+            favourites?.let {
+                favouriteAdapter.setDestinations(it)
+            }
+        }
 
-
+        viewModel.favouriteDestinations.observe(viewLifecycleOwner) { destinations ->
+            favouriteAdapter.setDestinations(destinations)
+        }
     }
 }

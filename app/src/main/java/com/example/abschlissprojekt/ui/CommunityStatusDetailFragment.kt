@@ -15,7 +15,7 @@ import com.example.abschlissprojekt.databinding.FragmentCommunityStatusDetailBin
 class CommunityStatusDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentCommunityStatusDetailBinding
-    //private val args: StatusDetailFragmentArgs by navArgs()
+    private val args: CommunityStatusDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,22 +29,24 @@ class CommunityStatusDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        (activity as MainActivity).supportActionBar?.title =
-//            args.name +
-//                    if (args.name.last() == 's') {
-//                        "' "
-//                    } else {
-//                        "'s "
-//                    } +
-//                    "Status"
-//
-//        binding.tvUsername.text = args.name
-////        val imageProfile = args.image
-//        binding.ivStatusDetailImg.load(args.image)
-//        binding.ivBackground.load(args.status)
-//        binding.iBtnBack.setOnClickListener {
-//            findNavController().navigateUp()
-//        }
-//
+        val imageStatus = arguments?.getInt("imageResId") ?: 0
+
+        (activity as MainActivity).supportActionBar?.title =
+            args.name +
+                    if (args.name.last() == 's') {
+                        "' "
+                    } else {
+                        "'s "
+                    } +
+                    "Status"
+
+        binding.tvUsername.text = args.name
+//        val imageProfile = args.image
+        binding.ivStatusDetailImg.load(args.image)
+        binding.ivBackground.load(args.imageStatus)
+        binding.iBtnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
     }
 }

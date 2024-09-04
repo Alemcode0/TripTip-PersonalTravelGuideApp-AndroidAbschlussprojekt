@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
     implementation(libs.places)
+    implementation(libs.androidx.adapters)
     val retrofitVersion = "2.9.0"
     val roomVersion = "2.6.0"
 

@@ -8,13 +8,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_contacts"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="94dp"
+        android:layout_height="260dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/btn_backtohome"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/list_item_community_status" />
 
     <com.google.android.material.card.MaterialCardView
@@ -61,18 +62,21 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_backtohome"
-        android:layout_width="170dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="32dp"
-        android:text="Back to Main page"
-        android:textSize="14sp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="88dp"
+        android:foreground="@drawable/outline_home_24"
+        app:backgroundTint="#E1C06E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/rv_contacts">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <TextView
         android:id="@+id/tv_profile_name"
@@ -91,9 +95,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="269dp"
         android:text="Community Status"
         android:textColor="@color/white"
         android:textSize="16sp"

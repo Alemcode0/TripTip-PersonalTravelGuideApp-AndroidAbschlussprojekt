@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="55dp"
         android:contentDescription="@string/floatingbtn"
-        android:src="@drawable/baseline_location_pin_24"
+        android:src="@drawable/baseline_people_24"
         app:backgroundTint="#E1C06E"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"

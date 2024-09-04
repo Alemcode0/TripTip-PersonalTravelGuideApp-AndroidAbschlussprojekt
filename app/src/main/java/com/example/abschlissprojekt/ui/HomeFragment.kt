@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.abschlissprojekt.MainViewModel
+import com.example.abschlissprojekt.R
 import com.example.abschlissprojekt.adapter.DestinationAdapter
 import com.example.abschlissprojekt.data.models.Destination
 import com.example.abschlissprojekt.databinding.FragmentHomeBinding
@@ -41,6 +42,10 @@ class HomeFragment : Fragment() {
         binding.rvHome.layoutManager = CarouselLayoutManager()
         binding.rvHome.setHasFixedSize(true)
         CarouselSnapHelper().attachToRecyclerView(binding.rvHome)
+
+        binding.ivProfile.setOnClickListener {
+            findNavController().navigate(R.id.profileCommunityFragment)
+        }
 
         // Daten laden und an den Adapter übergeben
         viewModel.destinationList.observe(viewLifecycleOwner) { destinations ->

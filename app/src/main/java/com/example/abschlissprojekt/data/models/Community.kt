@@ -10,5 +10,6 @@ data class Community(
     val name: String,
     val number: String,
     val image: Int,
-    val imageStatus: List<Int>
+    val imageStatus: List<Int>,
+    val statusDescription: String
 )

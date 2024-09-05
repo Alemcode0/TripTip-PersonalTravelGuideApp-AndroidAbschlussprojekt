@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.abschlissprojekt.R
 import com.example.abschlissprojekt.databinding.FragmentMapBinding
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -32,6 +33,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var currentLocation: Location
+    private val args: MapFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -193,5 +195,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val cityName = args.cityName
+
+        // Beispielcode, um die Stadt auf der Karte anzuzeigen
+        // Dies kann Google Maps oder ein anderes Karten-API sein
+        showCityOnMap(cityName)
+    }
+
+    private fun showCityOnMap(cityName: String) {
+        // Logik, um die Stadt auf der Karte anzuzeigen
+        // z.B., die Karte auf die Stadt zentrieren oder einen Marker setzen
     }
 }

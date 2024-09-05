@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_mapFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="cityName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/communityStatusDetailFragment"
@@ -112,8 +115,14 @@
             android:name="name"
             app:argType="string" />
         <argument
+            android:name="statusDescription"
+            app:argType="string" />
+        <argument
             android:name="imageStatus"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_communityStatusDetailFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
 </navigation>

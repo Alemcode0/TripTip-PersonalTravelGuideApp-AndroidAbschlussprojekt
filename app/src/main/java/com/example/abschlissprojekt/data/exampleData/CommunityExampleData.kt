@@ -11,8 +11,9 @@ object CommunityExampleData {
         image =
             R.drawable.triptoparis,
         imageStatus = listOf(
-            R.drawable.triptoparis
-        )
+            R.drawable.triptoparis),
+        statusDescription = "It’s true, you never forget your first love, \" +\n" +
+                "            \"and for me, that will always be Paris."
     )
 
     val Contact2 = Community(
@@ -22,7 +23,8 @@ object CommunityExampleData {
         image =
         R.drawable.triptoparis,
         imageStatus = listOf(
-            R.drawable.traveltunisia1
-        )
+            R.drawable.traveltunisia1),
+        statusDescription = "Tunisia is one of the best countries to " +
+                "explore the desert. I love the camel trip."
     )
 }

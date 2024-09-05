@@ -10,12 +10,15 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.abschlissprojekt.MainActivity
 import com.example.abschlissprojekt.R
+import com.example.abschlissprojekt.data.exampleData.DestinationExampleData
+import com.example.abschlissprojekt.data.models.Destination
 import com.example.abschlissprojekt.databinding.FragmentCommunityStatusDetailBinding
 
 class CommunityStatusDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentCommunityStatusDetailBinding
     private val args: CommunityStatusDetailFragmentArgs by navArgs()
+    private lateinit var destination: Destination
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +32,10 @@ class CommunityStatusDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imageStatus = arguments?.getInt("imageResId") ?: 0
+        //val imageStatus = arguments?.getInt("imageResId") ?: 0
+        val imageStatus = args.imageStatus
+        val image = args.image
+
 
         (activity as MainActivity).supportActionBar?.title =
             args.name +
@@ -41,9 +47,18 @@ class CommunityStatusDetailFragment : Fragment() {
                     "Status"
 
         binding.tvUsername.text = args.name
-//        val imageProfile = args.image
-        binding.ivStatusDetailImg.load(args.image)
-        binding.ivBackground.load(args.imageStatus)
+        binding.tvDescription.text = args.statusDescription
+        binding.ivStatusDetailImg.setImageResource(image)
+        binding.ivBackground.setImageResource(imageStatus)
+
+        val cityName = destination.name
+
+        binding.ivStatusDetailImg.setOnClickListener {
+            val action = CommunityStatusDetailFragmentDirections
+                .actionCommunityStatusDetailFragmentToMapFragment(cityName)
+            findNavController().navigate(action)
+        }
+
         binding.iBtnBack.setOnClickListener {
             findNavController().navigateUp()
         }

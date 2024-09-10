@@ -6,20 +6,21 @@ import com.example.abschlissprojekt.data.models.Destination
 object DestinationExampleData {
     val Destination1 = Destination(
         id = 1,
-        name = "Sagrada Familia and Park Güell, Barcelona, Spain",
-        description = "With incredible food, sprawling beaches, world-renowned architecture, and tons of museums, " +
-                "Barcelona is a feast for the senses. Architecture lovers can tour the works of Antoni Gaudí, " +
-                "including Sagrada Familia and Park Güell. From the historic Gothic Quarter to the Picasso museum, " +
-                "it's a mecca for creative inspiration.",
+        name = "Oia, Greece",
+        description = "This coastal town on the tip of Santorini is packed with whitewashed houses on rugged clifftops that overlook the water. " +
+                "It also boasts Oia Castle, which has amazing sunset views.",
         imageUrl =
-        R.drawable.barcelonaparkguell,
-        R.drawable.travelspain1,
-        R.drawable.travelspain2,
-        R.drawable.travelspain3,
-        R.drawable.travelspain4,
+        R.drawable.travelgreece,
+        R.drawable.travelgreece1,
+        R.drawable.travelgreece2,
+        R.drawable.travelgreece3,
+        R.drawable.travelgreece4,
         location = "Europa",
-        favourite = false
+        favourite = false,
+        latitude = (36.451862),
+        longitude = (25.369194)
     )
+
     val Destination2 = Destination(
         id = 2,
         name = "Hvar, Croatia",
@@ -33,7 +34,9 @@ object DestinationExampleData {
         R.drawable.travelcroatia3,
         R.drawable.travelcroatia4,
         location = "Europa",
-        favourite = false
+        favourite = false,
+        latitude = (43.172989),
+        longitude = (16.440144)
     )
 
     val Destination3 = Destination(
@@ -41,7 +44,11 @@ object DestinationExampleData {
         name = "Eiffel Tower, Paris, France",
         description = "It's rare that we'd consider an urban area as beautiful as anything found in nature, " +
                 "but if any city gets our vote, it's Paris. From the Seine to the pastel sunsets behind the " +
-                "Eiffel Tower to the Champs-Élysées all lit up at night—Paris, je t'aime.",
+                "Eiffel Tower to the Champs-Élysées all lit up at night—Paris, je t'aime." +
+                " The Eiffel Tower, an iconic symbol of Paris and France, is a wrought-iron lattice tower on " +
+                "the Champ de Mars. Standing at 330 meters, it offers breathtaking views of the city. It was " +
+                "completed in 1889 as the centerpiece of the 1889 World's Fair and is one of the most recognizable " +
+                "structures in the world, drawing millions of visitors each year.",
         imageUrl =
         R.drawable.triptoparis,
         R.drawable.travelparis1,
@@ -49,7 +56,9 @@ object DestinationExampleData {
         R.drawable.travelparis3,
         R.drawable.travelparis4,
         location = "Europa",
-        favourite = false
+        favourite = false,
+        latitude = (48.858093),
+        longitude = (2.294694)
     )
 
     val Destination4 = Destination(
@@ -64,7 +73,9 @@ object DestinationExampleData {
         R.drawable.travelborabora3,
         R.drawable.travelborabora4,
         location = "Europa",
-        favourite = false
+        favourite = false,
+        latitude = (-16.499701),
+        longitude = (-151.770538)
     )
     val Destination5 = Destination(
         id = 5,
@@ -78,7 +89,9 @@ object DestinationExampleData {
         R.drawable.traveltunisia3,
         R.drawable.traveltunisia4,
         location = "Africa",
-        favourite = false
+        favourite = false,
+        latitude = (36.869835),
+        longitude = (16.440144)
     )
     val Destination6 = Destination(
         id = 6,
@@ -94,21 +107,28 @@ object DestinationExampleData {
         R.drawable.travelcanada3,
         R.drawable.travelcanada4,
         location = "North America",
-        favourite = false
+        favourite = false,
+        latitude = (53.135509),
+        longitude = (-57.660435)
     )
+
     val Destination7 = Destination(
         id = 7,
-        name = "Oia, Greece",
-        description = "This coastal town on the tip of Santorini is packed with whitewashed houses on rugged clifftops that overlook the water. " +
-                "It also boasts Oia Castle, which has amazing sunset views.",
+        name = "Sagrada Familia and Park Güell, Barcelona, Spain",
+        description = "With incredible food, sprawling beaches, world-renowned architecture, and tons of museums, " +
+                "Barcelona is a feast for the senses. Architecture lovers can tour the works of Antoni Gaudí, " +
+                "including Sagrada Familia and Park Güell. From the historic Gothic Quarter to the Picasso museum, " +
+                "it's a mecca for creative inspiration.",
         imageUrl =
-        R.drawable.travelgreece,
-        R.drawable.travelgreece1,
-        R.drawable.travelgreece2,
-        R.drawable.travelgreece3,
-        R.drawable.travelgreece4,
+        R.drawable.barcelonaparkguell,
+        R.drawable.travelspain1,
+        R.drawable.travelspain2,
+        R.drawable.travelspain3,
+        R.drawable.travelspain4,
         location = "Europa",
-        favourite = false
+        favourite = false,
+        latitude = (41.414494),
+        longitude = (2.152695)
     )
 
     val Destination8 = Destination(
@@ -124,7 +144,9 @@ object DestinationExampleData {
         R.drawable.travelchaina3,
         R.drawable.travelchaina4,
         location = "Asia",
-        favourite = false
+        favourite = false,
+        latitude = (29.117001),
+        longitude = (110.478996)
     )
 
     val Destination9 = Destination(
@@ -139,7 +161,9 @@ object DestinationExampleData {
         R.drawable.travelengland3,
         R.drawable.travelengland4,
         location = "Europa",
-        favourite = false
+        favourite = false,
+        latitude = (51.063202),
+        longitude = (-1.308000)
     )
     val Destination10 = Destination(
         id = 10,
@@ -152,6 +176,8 @@ object DestinationExampleData {
         R.drawable.travelnamerica3,
         R.drawable.travelnamerica4,
         location = "North America",
-        favourite = false
+        favourite = false,
+        latitude = (36.952766),
+        longitude = (-111.441269)
     )
 }

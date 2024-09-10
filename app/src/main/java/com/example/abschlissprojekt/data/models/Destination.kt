@@ -17,5 +17,7 @@ data class Destination(
     val imageUrl3: Int,
     val imageUrl4: Int,
     val location: String,
-    var favourite: Boolean = false
+    var favourite: Boolean = false,
+    val latitude: Double,
+    val longitude: Double
 )

@@ -6,4 +6,5 @@
     <string name="login">Login</string>
     <string name="floatingbtn">TODO</string>
     <string name="space" />
+    <string name="desc" />
 </resources>

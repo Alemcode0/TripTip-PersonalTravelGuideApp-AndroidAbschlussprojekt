@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.example.abschlissprojekt.data.models.Community
-import com.example.abschlissprojekt.data.models.Destination
 import com.example.abschlissprojekt.databinding.ListItemCommunityStatusBinding
-import com.example.abschlissprojekt.ui.ProfileCommunityFragment
-import com.example.abschlissprojekt.ui.ProfileCommunityFragmentDirections
+import com.example.abschlissprojekt.ui.ProfileFragmentDirections
+import com.google.android.gms.maps.model.LatLng
 
 class ProfileCommunityAdapter(private var dataset: List<Community>
 ) : RecyclerView.Adapter<ProfileCommunityAdapter.ProfileCommunityViewHolder>() {
@@ -33,7 +31,7 @@ class ProfileCommunityAdapter(private var dataset: List<Community>
         dataset.size
 
     override fun onBindViewHolder(holder: ProfileCommunityViewHolder, position: Int) {
-        // Sortiere die Liste basierend darauf, ob imageStatus leer ist oder nicht.
+        // Sortiere die Liste ob imageStatus leer ist oder nicht.
         val communitySortedByStatus = dataset.sortedBy { it.imageStatus.isEmpty() }
         val contact = communitySortedByStatus[position]
 
@@ -44,11 +42,19 @@ class ProfileCommunityAdapter(private var dataset: List<Community>
         // Überprüfen, ob imageStatus nicht leer ist, um entsprechend darauf zu reagieren.
         if (contact.imageStatus.isNotEmpty()) {
             holder.binding.communityStatusItem.setOnClickListener {
+                val latLng = LatLng(52.5200, 13.4050)
+                val lat: Double = latLng.latitude  // Konvertierung in Float
+                val lng: Double = latLng.longitude
                 holder.itemView.findNavController().navigate(
-                    ProfileCommunityFragmentDirections.actionProfileCommunityFragmentToCommunityStatusDetailFragment(
+                    ProfileFragmentDirections.actionProfileCommunityFragmentToCommunityStatusDetailFragment(
                         contact.image,
                         contact.name,
-                        contact.imageStatus[0] // Zeigt das erste Bild in der Liste an
+                        contact.statusDescription,
+                        contact.cityName,
+                        contact.latitude.toFloat(),
+                        contact.longitude.toFloat(),
+                        contact.imageStatus.first()
+
                     )
                 )
             }

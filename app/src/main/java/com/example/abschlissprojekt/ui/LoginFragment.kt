@@ -8,16 +8,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.abschlissprojekt.FirebaseViewModel
 import com.example.abschlissprojekt.R
 import com.example.abschlissprojekt.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
-
-    lateinit var etvUserName: EditText
-    lateinit var etvPassword: EditText
-    lateinit var loginButton: Button
+    private val viewModel: FirebaseViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +31,30 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.loginButton.setOnClickListener(View.OnClickListener {
-            if (binding.etvUserName.text.toString() == "user" && binding.etvPassword.text.toString() == "4321") {
-                Toast.makeText(requireContext(), "Login Successful!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Login Failed!", Toast.LENGTH_SHORT).show()
+        binding.btToRegister.setOnClickListener {
+            findNavController().navigate(R.id.registerFragment)
+        }
+
+        binding.btLogin.setOnClickListener {
+            val email: String = binding.tietEmail.text.toString()
+            val pass: String = binding.tietPass.text.toString()
+
+            if (email != "" && pass != "") {
+                viewModel.login(email, pass)
             }
-        })
+
+        }
+
+
+        // Wenn User eingeloggt wird vom Login-Screen weg-navigiert
+        viewModel.currentUser.observe(viewLifecycleOwner) {
+            if (it != null) {
+                findNavController().navigate(R.id.homeFragment)
+            }
+        }
+
+//        binding.btToReset.setOnClickListener {
+//            findNavController().navigate(R.id.passwordResetFragment)
+//        }
     }
 }

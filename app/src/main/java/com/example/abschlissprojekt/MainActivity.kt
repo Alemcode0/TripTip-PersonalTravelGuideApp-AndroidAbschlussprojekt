@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navHost.navController)
 
         binding.floatingActionButton.setOnClickListener {
-            navHost.findNavController().navigate(R.id.profileCommunityFragment)
+            navHost.findNavController().navigate(R.id.profileFragment)
 
 //            //der Standort aktualisieren
 //            val bundle = Bundle().apply { putBoolean("shouldUpdateLocation", true) }

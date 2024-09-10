@@ -2,7 +2,9 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/charmonman</item>
+        <item>@font/nothing_you_could_do</item>
         <item>@font/poppins_light</item>
         <item>@font/sora_thin</item>
+        <item>@font/vibur</item>
     </array>
 </resources>

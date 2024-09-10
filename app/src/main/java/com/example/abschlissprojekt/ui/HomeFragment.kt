@@ -38,13 +38,13 @@ class HomeFragment : Fragment() {
         val adapter = DestinationAdapter(imageList, viewModel)
         destinationAdapter = DestinationAdapter(emptyList(), viewModel)
 
-        binding.rvHome.adapter = adapter
+        binding.rvHome.adapter = destinationAdapter
         binding.rvHome.layoutManager = CarouselLayoutManager()
         binding.rvHome.setHasFixedSize(true)
         CarouselSnapHelper().attachToRecyclerView(binding.rvHome)
 
         binding.ivProfile.setOnClickListener {
-            findNavController().navigate(R.id.profileCommunityFragment)
+            findNavController().navigate(R.id.profileFragment)
         }
 
         // Daten laden und an den Adapter übergeben

@@ -15,4 +15,5 @@ class Converter {
     fun toIntList(json: String?): List<Int>? {
         return if (json == null) null else Gson().fromJson(json, object : TypeToken<List<Int>>() {}.type)
     }
+
 }

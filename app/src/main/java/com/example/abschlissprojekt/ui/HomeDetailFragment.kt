@@ -95,7 +95,9 @@ class HomeDetailFragment : Fragment() {
             imageUrl3 = R.drawable.travelparis3,
             imageUrl4 = R.drawable.travelparis4,
             location = "Location",
-            favourite = false
+            favourite = false,
+            latitude = 0.0,
+            longitude = 0.0
         )
 
 

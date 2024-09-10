@@ -64,7 +64,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun searchDestinations(query: String): LiveData<List<Destination>> {
-        return destinationDao.searchDestinations("%$query%")
+        val filteredDestinations = destinationList.value?.filter {
+            it.name.contains(query, ignoreCase = true)
+        }
+        return MutableLiveData(filteredDestinations)
     }
 
     fun updateDestination(destination: Destination) {

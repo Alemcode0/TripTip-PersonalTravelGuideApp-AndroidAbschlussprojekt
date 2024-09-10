@@ -17,8 +17,8 @@
         android:title="Map"/>
 
     <item
-        android:id="@+id/profileCommunityFragment"
-        android:icon="@drawable/baseline_people_24"
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/baseline_person_24"
         android:title="ProfileCommunity"/>
 
 </menu>

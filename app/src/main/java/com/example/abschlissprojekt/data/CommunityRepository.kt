@@ -18,6 +18,11 @@ class CommunityRepository(private val communityDao: CommunityDao) {
     suspend fun insert() {
         communityDao.insert(CommunityExampleData.Contact1)
         communityDao.insert(CommunityExampleData.Contact2)
+        communityDao.insert(CommunityExampleData.Contact3)
+        communityDao.insert(CommunityExampleData.Contact4)
+        communityDao.insert(CommunityExampleData.Contact5)
+        communityDao.insert(CommunityExampleData.Contact6)
+        communityDao.insert(CommunityExampleData.Contact7)
     }
 
     suspend fun update(community: Community) {

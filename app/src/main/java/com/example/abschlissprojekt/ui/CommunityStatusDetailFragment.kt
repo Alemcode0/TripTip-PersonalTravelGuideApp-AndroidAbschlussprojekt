@@ -47,15 +47,19 @@ class CommunityStatusDetailFragment : Fragment() {
                     "Status"
 
         binding.tvUsername.text = args.name
+        binding.tvCityName.text = args.cityName
         binding.tvDescription.text = args.statusDescription
         binding.ivStatusDetailImg.setImageResource(image)
         binding.ivBackground.setImageResource(imageStatus)
 
-        val cityName = destination.name
+        val cityName = args.cityName
+        val lat = args.latitude
+        val lng = args.longitude
 
-        binding.ivStatusDetailImg.setOnClickListener {
+        binding.ivBackground.setOnClickListener {
             val action = CommunityStatusDetailFragmentDirections
-                .actionCommunityStatusDetailFragmentToMapFragment(cityName)
+                .actionCommunityStatusDetailFragmentToMapFragment(
+                    cityName, lat, lng, imageStatus)
             findNavController().navigate(action)
         }
 

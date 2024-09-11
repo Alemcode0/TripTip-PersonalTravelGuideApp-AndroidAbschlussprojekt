@@ -1,6 +1,5 @@
 package com.example.abschlissprojekt
 
-import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -49,9 +48,6 @@ class FirebaseViewModel: ViewModel() {
                         param(FirebaseAnalytics.Param.ITEM_ID, _currentUser.value?.email!!)
                         param(FirebaseAnalytics.Param.ITEM_NAME, "Email")
                     }
-
-
-
                 }else{
                     Log.d("MainViewModel","Login failed")
                 }
@@ -87,32 +83,5 @@ class FirebaseViewModel: ViewModel() {
         firebaseAuth.signOut()
         _currentUser.value = null
 
-    }
-
-    //Updated das Profile im Firestore
-    fun updateProfile(profile: Profile){
-        profileRef.set(profile)
-    }
-
-    fun deleteUser(){
-
-    }
-    fun uploadImage(uri: Uri){
-        val imageRef = firebaseStrorage.reference.child("images/${currentUser.value?.uid}/test")
-        val uploadTask = imageRef.putFile(uri)
-        //Um die URL des hochgeladen Images in unseren user zu schreiben müssen wir wissen wann der Upload fertig ist :)
-        uploadTask.addOnCompleteListener{
-            imageRef.downloadUrl.addOnCompleteListener {
-                if(it.isSuccessful){
-                    //Sobald wir die URl herruntergeladen haben können wir diese in das User Object schreiben :)
-                    setImage(it.result)
-                }
-            }
-        }
-    }
-
-    private fun setImage(uri: Uri){
-        //Updaten des Image Pfades im Firestore :)
-        profileRef.update("profilePicture",uri.toString())
     }
 }

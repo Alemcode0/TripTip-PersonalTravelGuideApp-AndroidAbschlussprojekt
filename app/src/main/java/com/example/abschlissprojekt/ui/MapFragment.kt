@@ -82,11 +82,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
         googleMap.addMarker(MarkerOptions().position(latLng).title(cityName))
 
-        //val initialPosition = LatLng(51.5167, 13.404954)
-//        val latLng =
-//            LatLng(currentLocation?.latitude ?: return, currentLocation?.longitude ?: return)
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19f))
-
         setupMapUi()
 
         // Prüfe, ob cityName im Argument übergeben wurde
@@ -207,15 +202,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-//    fun moveToCurrentLocation() {
-//        if (currentLocation != null) {
-//            val latLng = LatLng(currentLocation!!.latitude, currentLocation!!.longitude)
-//            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 19f))
-//        } else {
-//            fetchLocation()
-//        }
-//    }
-
     private fun fetchLocation() {
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
@@ -258,13 +244,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
         }
     }
-
-
-//    private fun getAdress(lat: Double, lon: Double): String? {
-//        val geoCoder = Geocoder(requireContext(), Locale.getDefault())
-//        val adresses = geoCoder.getFromLocation(lat,lon, 1)
-//        return adresses?.get(0)?.getAddressLine(0).toString()
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

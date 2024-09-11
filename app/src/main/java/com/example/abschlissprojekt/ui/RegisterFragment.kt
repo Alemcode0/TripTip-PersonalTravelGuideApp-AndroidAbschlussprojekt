@@ -48,6 +48,5 @@ class RegisterFragment: Fragment() {
                 findNavController().navigate(R.id.homeFragment)
             }
         }
-
     }
 }

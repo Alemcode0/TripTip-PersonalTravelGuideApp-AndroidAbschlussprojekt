@@ -16,7 +16,9 @@ class CommunityViewModel(application: Application) : AndroidViewModel(applicatio
     val allCommunities: LiveData<List<Community>>
 
     init {
+        // Holen des DAO (Data Access Object) für die Community-Datenbank
         val communityDao = CommunityDatabase.getDatabase(application).communityDao()
+        // Initialisierung des Repositories mit dem DAO, um Datenbankzugriffe zu verwalten
         repository = CommunityRepository(communityDao)
         allCommunities = repository.getAllCommunities()
         insert()
@@ -33,6 +35,7 @@ class CommunityViewModel(application: Application) : AndroidViewModel(applicatio
 
 
     fun update(community: Community) =
+        // Startet eine Coroutine, um den Update-Vorgang asynchron durchzuführen
         viewModelScope.launch {
         repository.update(community)
     }

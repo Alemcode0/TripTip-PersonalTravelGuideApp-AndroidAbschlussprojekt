@@ -17,6 +17,7 @@ import com.example.abschlissprojekt.databinding.FragmentCommunityStatusDetailBin
 class CommunityStatusDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentCommunityStatusDetailBinding
+    // Empfangen der Argumente, die beim Navigieren an dieses Fragment übergeben wurden
     private val args: CommunityStatusDetailFragmentArgs by navArgs()
     private lateinit var destination: Destination
 
@@ -32,11 +33,11 @@ class CommunityStatusDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val imageStatus = arguments?.getInt("imageResId") ?: 0
+        // Holt die übergebenen Statusbild- und Statusinformationen aus den Argumenten
         val imageStatus = args.imageStatus
         val image = args.image
 
-
+        // Setzt den Titel der ActionBar abhängig vom übergebenen Namen
         (activity as MainActivity).supportActionBar?.title =
             args.name +
                     if (args.name.last() == 's') {
@@ -46,16 +47,19 @@ class CommunityStatusDetailFragment : Fragment() {
                     } +
                     "Status"
 
+        // Setzt den Namen, die Stadt und die Statusbeschreibung auf den entsprechenden Views
         binding.tvUsername.text = args.name
         binding.tvCityName.text = args.cityName
         binding.tvDescription.text = args.statusDescription
         binding.ivStatusDetailImg.setImageResource(image)
         binding.ivBackground.setImageResource(imageStatus)
 
+        // Holt Stadtname, Latitude und Longitude aus den Argumenten
         val cityName = args.cityName
         val lat = args.latitude
         val lng = args.longitude
 
+        // Bei Klick auf das Hintergrundbild navigiert die App zur MapFragment und übergibt Stadtname, Koordinaten und Statusbild
         binding.ivBackground.setOnClickListener {
             val action = CommunityStatusDetailFragmentDirections
                 .actionCommunityStatusDetailFragmentToMapFragment(

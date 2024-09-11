@@ -1,10 +1,12 @@
 package com.example.abschlissprojekt.ui
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,11 +23,19 @@ class ProfileFragment : Fragment() {
     private val firebaseViewModel: FirebaseViewModel by activityViewModels()
     private lateinit var adapter: ProfileCommunityAdapter
 
+    // Launcher für die Bildauswahl
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            // Zeige das ausgewählte Bild im ImageView
+            binding.ivBackgroundPic.setImageURI(uri)
+
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Verwende den inflater und container für das Binding
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,6 +43,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Logout-Button
         binding.btLogout.setOnClickListener {
             firebaseViewModel.logout()
             findNavController().navigate(R.id.loginFragment)
@@ -41,17 +52,19 @@ class ProfileFragment : Fragment() {
         // Initialisiere den Adapter mit einer leeren Liste
         adapter = ProfileCommunityAdapter(emptyList())
 
-        // Adapter und LayoutManager für die RecyclerView
         binding.rvContacts.adapter = adapter
         binding.rvContacts.layoutManager = LinearLayoutManager(context)
 
-        // die Daten beobachten und aktualisiere den Adapter
+        // Beobachte die Daten und aktualisiere den Adapter
         viewModel.allCommunities.observe(viewLifecycleOwner) { communities ->
-            // Update den Adapter mit der neuen Liste
             adapter = ProfileCommunityAdapter(communities)
             binding.rvContacts.adapter = adapter
             binding.rvContacts.setHasFixedSize(true)
+        }
 
+        // Button-Klick-Listener zum Öffnen der Galerie
+        binding.btUpdateStatus.setOnClickListener {
+            pickImageLauncher.launch("image/*")
         }
     }
 }

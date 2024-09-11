@@ -31,10 +31,6 @@ class MainActivity : AppCompatActivity() {
         // FloatingActionButton initialisieren
         val fab: FloatingActionButton = binding.floatingActionButton
 
-//        fab.setOnClickListener {
-//            handleFabClick()
-//        }
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
             //den FAB je nach Fragment ein-/auszublenden
             when (destination.id) {
@@ -46,10 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.floatingActionButton.setOnClickListener {
             navHost.findNavController().navigate(R.id.profileFragment)
-
-//            //der Standort aktualisieren
-//            val bundle = Bundle().apply { putBoolean("shouldUpdateLocation", true) }
-//            navHost.findNavController().navigate(R.id.mapFragment, bundle)
         }
 
         onBackPressedDispatcher.addCallback(
@@ -60,24 +52,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
     }
-
-//    private fun handleFabClick() {
-//        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
-//
-//        if (currentFragment is MapFragment) {
-//            currentFragment.moveToCurrentLocation()
-//        } else {
-//            //Navigate zum MapFragment und dann zum aktuellen Standort
-//            navController.navigate(R.id.mapFragment)
-//            // die Kamera nach dem Wechsel zum Fragment bewegen:
-//            navController.addOnDestinationChangedListener { _, destination, _ ->
-//                if (destination.id == R.id.mapFragment) {
-//                    val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as? MapFragment
-//                    fragment?.moveToCurrentLocation()
-//                }
-//            }
-//        }
-//    }
 
     override fun onSupportNavigateUp(): Boolean {
         return binding.fragmentContainerView.findNavController().navigateUp() || super.onSupportNavigateUp()

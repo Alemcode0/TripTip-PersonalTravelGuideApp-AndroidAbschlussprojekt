@@ -33,22 +33,18 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialisiert eine leere Liste von Zielen
         val imageList = listOf<Destination>()
-        // Initialisiert den Adapter für die Favoritenanzeige und übergibt eine leere Liste und das ViewModel
         val favouriteAdapter = FavouriteAdapter(emptyList(), viewModel)
 
         binding.rvFavorite.adapter = favouriteAdapter
         binding.rvFavorite.setHasFixedSize(true)
 
-        // Beobachtet die Favoritenliste im ViewModel und aktualisiert den Adapter, wenn sich die Liste ändert
         viewModel.allFavourites.observe(viewLifecycleOwner) { favourites ->
             favourites?.let {
                 favouriteAdapter.setDestinations(it)
             }
         }
 
-        // Beobachtet eine Liste von Favoritenzielen im ViewModel und aktualisiert
         viewModel.favouriteDestinations.observe(viewLifecycleOwner) { destinations ->
             favouriteAdapter.setDestinations(destinations)
         }

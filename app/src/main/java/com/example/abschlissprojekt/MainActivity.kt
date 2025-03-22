@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         val fab: FloatingActionButton = binding.floatingActionButton
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            //den FAB je nach Fragment ein-/auszublenden
             when (destination.id) {
                 R.id.homeFragment, R.id.favouriteFragment, R.id.mapFragment -> fab.show()
                 else -> fab.hide()

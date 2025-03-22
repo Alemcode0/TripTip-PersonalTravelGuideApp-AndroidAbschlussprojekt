@@ -77,7 +77,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val latitude = args.latitude
         val longitude = args.longitude
 
-        // Setze die Koordinaten und den Marker
         val latLng = LatLng(latitude.toDouble(), longitude.toDouble())
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
         googleMap.addMarker(MarkerOptions().position(latLng).title(cityName))
@@ -113,7 +112,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         // Beobachte die destinationList im ViewModel
         viewModel.destinationList.observe(viewLifecycleOwner) { destinationList ->
-            // Wenn sich die Liste ändert, durchlaufe die Liste und setze Marker
             destinationList.forEach { destination ->
                 val latLng = LatLng(destination.latitude, destination.longitude)
                 val markerOptions = MarkerOptions()
@@ -121,15 +119,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     .title(destination.name)
 
                 val marker = googleMap.addMarker(markerOptions)
-                // Setze den CustomInfoWindow für jeden Marker
                 marker?.tag = CustomInfoWindow(destination.name, destination.imageUrl)
             }
 
-            // Setze den InfoWindowAdapter für die Karte, um CustomInfoWindows zu unterstützen
             googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(requireContext()))
         }
-
-
     }
 
     private fun setupMapUi() {
@@ -176,19 +170,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 val geocoder = Geocoder(requireContext(), Locale.getDefault())
                 val addressList: List<Address>? = geocoder.getFromLocationName(cityName, 1)
 
-                // Falls die Stadt gefunden wird
                 if (!addressList.isNullOrEmpty()) {
                     val address = addressList[0]
                     val latLng = LatLng(address.latitude, address.longitude)
 
-                    // UI-Operationen
                     withContext(Dispatchers.Main) {
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
                         googleMap.addMarker(MarkerOptions().position(latLng).title(cityName))
                     }
                 } else {
-                    // Falls die Stadt nicht gefunden wird
-                    //moveToCurrentLocation()
                     withContext(Dispatchers.Main) {
                         Toast.makeText(requireContext(), "Stadt nicht gefunden: $cityName", Toast.LENGTH_SHORT).show()
                     }

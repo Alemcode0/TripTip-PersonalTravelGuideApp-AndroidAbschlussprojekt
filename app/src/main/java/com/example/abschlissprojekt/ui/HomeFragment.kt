@@ -58,7 +58,6 @@ class HomeFragment : Fragment() {
 
     private fun setupSearchView() {
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            // Wird aufgerufen, wenn der Benutzer die Suche absendet
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     searchDestinations(it)
@@ -66,7 +65,6 @@ class HomeFragment : Fragment() {
                 return false
             }
 
-            // Wird aufgerufen, wenn sich der Text in der Suchleiste ändert
             override fun onQueryTextChange(newText: String?): Boolean {
                 newText?.let {
                     searchDestinations(it)
@@ -76,7 +74,6 @@ class HomeFragment : Fragment() {
         })
     }
 
-    // Funktion, um nach Reisezielen basierend auf der Suchanfrage zu suchen
     private fun searchDestinations(query: String) {
         viewModel.searchDestinations(query).observe(viewLifecycleOwner) { destinations ->
             if (destinations.isEmpty()) {
@@ -88,5 +85,4 @@ class HomeFragment : Fragment() {
             binding.rvHome.adapter = DestinationAdapter(destinations, viewModel)
         }
     }
-
 }

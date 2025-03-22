@@ -57,7 +57,6 @@ class DestinationAdapter(
                 destinationImage3 = currentDestination.imageUrl2,
                 destinationImage4 = currentDestination.imageUrl3,
                 destinationImage5 = currentDestination.imageUrl4,
-                //currentDestination.favourite
             )
             holder.itemView.findNavController().navigate(action)
         }

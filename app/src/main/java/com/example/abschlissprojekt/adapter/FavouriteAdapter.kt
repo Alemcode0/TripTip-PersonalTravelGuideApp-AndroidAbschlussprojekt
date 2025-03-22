@@ -45,7 +45,6 @@ class FavouriteAdapter(
                 showToast(holder,"Destination removed from Favourite")
             }
         }
-
     }
 
     private fun showToast(holder: FavouriteViewHolder, message: String) {

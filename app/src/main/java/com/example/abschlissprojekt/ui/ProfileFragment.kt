@@ -23,10 +23,8 @@ class ProfileFragment : Fragment() {
     private val firebaseViewModel: FirebaseViewModel by activityViewModels()
     private lateinit var adapter: ProfileCommunityAdapter
 
-    // Launcher für die Bildauswahl
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
-            // Zeige das ausgewählte Bild im ImageView
             binding.ivBackgroundPic.setImageURI(uri)
 
         }
@@ -43,26 +41,22 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Logout-Button
         binding.btLogout.setOnClickListener {
             firebaseViewModel.logout()
             findNavController().navigate(R.id.loginFragment)
         }
 
-        // Initialisiere den Adapter mit einer leeren Liste
         adapter = ProfileCommunityAdapter(emptyList())
 
         binding.rvContacts.adapter = adapter
         binding.rvContacts.layoutManager = LinearLayoutManager(context)
 
-        // Beobachte die Daten und aktualisiere den Adapter
         viewModel.allCommunities.observe(viewLifecycleOwner) { communities ->
             adapter = ProfileCommunityAdapter(communities)
             binding.rvContacts.adapter = adapter
             binding.rvContacts.setHasFixedSize(true)
         }
 
-        // Button-Klick-Listener zum Öffnen der Galerie
         binding.btUpdateStatus.setOnClickListener {
             pickImageLauncher.launch("image/*")
         }

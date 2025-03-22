@@ -35,7 +35,6 @@ class CommunityViewModel(application: Application) : AndroidViewModel(applicatio
 
 
     fun update(community: Community) =
-        // Startet eine Coroutine, um den Update-Vorgang asynchron durchzuführen
         viewModelScope.launch {
         repository.update(community)
     }

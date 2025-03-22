@@ -54,7 +54,6 @@ class HomeDetailFragment : Fragment() {
         binding.ivGallery3.setImageResource(imageResource4)
         binding.ivGallery4.setImageResource(imageResource5)
 
-        // Wenn auf das erste Galerie-Bild geklickt wird, wird es als Hauptbild angezeigt
         binding.ivGallery1.setOnClickListener {
             binding.ivHomeDetail.setImageResource(imageResource2)
         }
@@ -75,10 +74,8 @@ class HomeDetailFragment : Fragment() {
             this.findNavController().navigateUp()
         }
 
-        // Setzt den Listener für die RatingBar, um die Bewertung anzuzeigen
         binding.ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
             binding.tvRating.text = rating.toString()
-            // Zeigt eine textliche Bewertung je nach Rating an
             when (ratingBar.rating.toInt()) {
                 1 -> binding.tvRating.text = "Very Bad"
                 2 -> binding.tvRating.text = "Bad"
@@ -89,7 +86,6 @@ class HomeDetailFragment : Fragment() {
             }
         }
 
-        //Beispielziel (Destination), das als Favorit hinzugefügt oder entfernt werden kann
         destination = Destination(
             name = "Favourite Destination",
             description = "Description",
@@ -104,9 +100,7 @@ class HomeDetailFragment : Fragment() {
             longitude = 0.0
         )
 
-        // Klick-Listener für das Herz-Icon, um Favoriten hinzuzufügen oder zu entfernen
         binding.cbHeart.setOnClickListener {
-            // Wenn das Ziel bereits ein Favorit ist, wird es entfernt
             if (destination.favourite) {
                 destination.favourite = false
                 viewModel.removeFavourite(destination)
@@ -116,9 +110,9 @@ class HomeDetailFragment : Fragment() {
                 viewModel.addFavourite(destination)
                 showToast("Destination added to Favourites")
             }
-            updateFavouriteButton() //Aktualisiert das Favoriten-Icon
+            updateFavouriteButton()
         }
-        updateFavouriteButton() // Initiale Aktualisierung des Favoriten-Buttons
+        updateFavouriteButton()
     }
 
     private fun updateFavouriteButton() {

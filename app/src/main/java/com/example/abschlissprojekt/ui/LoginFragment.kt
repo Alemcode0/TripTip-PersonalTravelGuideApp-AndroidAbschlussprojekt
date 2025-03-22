@@ -36,19 +36,14 @@ class LoginFragment : Fragment() {
         }
 
         binding.btLogin.setOnClickListener {
-            // Holt den Text aus den Eingabefeldern für E-Mail und Passwort
             val email: String = binding.tietEmail.text.toString()
             val pass: String = binding.tietPass.text.toString()
 
-            // Überprüft, ob das E-Mail und Passwortfeld nicht leer sind
             if (email != "" && pass != "") {
-                // Ruft die Login-Funktion im ViewModel auf und übergibt die E-Mail und das Passwort
                 viewModel.login(email, pass)
             }
         }
 
-
-        // Wenn User eingeloggt wird vom Login-Screen weg-navigiert
         viewModel.currentUser.observe(viewLifecycleOwner) {
             if (it != null) {
                 findNavController().navigate(R.id.homeFragment)

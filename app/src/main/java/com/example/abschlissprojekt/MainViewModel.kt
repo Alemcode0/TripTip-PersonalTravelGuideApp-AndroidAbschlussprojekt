@@ -80,6 +80,5 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             repository.allDestinations
         }
-
     }
 }

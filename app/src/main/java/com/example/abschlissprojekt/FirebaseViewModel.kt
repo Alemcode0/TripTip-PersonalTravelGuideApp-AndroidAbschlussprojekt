@@ -43,7 +43,6 @@ class FirebaseViewModel: ViewModel() {
                 if(it.isSuccessful) {
                     Log.d("MainViewModel","Login done")
                     setUpUserEnv()
-                    //hier loggen wir das Login Even des Nutzers
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
                         param(FirebaseAnalytics.Param.ITEM_ID, _currentUser.value?.email!!)
                         param(FirebaseAnalytics.Param.ITEM_NAME, "Email")
@@ -60,7 +59,6 @@ class FirebaseViewModel: ViewModel() {
                 if(it.isSuccessful){
                     Log.d("MainViewModel","Register done")
                     setUpUserEnv()
-                    //Beim registrieren eines Nutzers müssen wir ein Leeres Document erstellen
                     setupNewProfile()
                 }else{
                     Log.d("MainViewModel","Register failed")
@@ -68,7 +66,6 @@ class FirebaseViewModel: ViewModel() {
             }
     }
 
-    //Holt sich denn aktuellen Auth user und holen uns die Referenze
     private fun setUpUserEnv(){
         _currentUser.value = firebaseAuth.currentUser
         profileRef = firebaseFireStore.collection("profile").document(firebaseAuth.currentUser?.uid!!)

@@ -21,21 +21,18 @@ class CustomInfoWindowAdapter(private val context : Context) : GoogleMap.InfoWin
 
     override fun getInfoWindow(marker: Marker): View? {
         val view = LayoutInflater.from(context).inflate(R.layout.custom_info_window,null)
-        // Finde die Views in deinem Layout
+
         val title: TextView = view.findViewById(R.id.infoWindowTitle)
         val image: ImageView = view.findViewById(R.id.infoWindowIv)
 
-        // Extrahiere die Daten aus dem Marker Tag
         val data = marker.tag as? CustomInfoWindow
 
-        // Falls das Tag vorhanden ist, setze die entsprechenden Daten
         if (data != null) {
             title.text = data.title
             image.setImageResource(data.image)
         } else {
-            // Optional: Fallback, falls die Daten nicht gesetzt wurden
             title.text = marker.title
-            image.setImageResource(R.drawable.travelberlin)  // Setze ein Standardbild
+            image.setImageResource(R.drawable.travelberlin)
         }
 
         return view

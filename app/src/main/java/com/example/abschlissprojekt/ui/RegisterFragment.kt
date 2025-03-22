@@ -40,9 +40,7 @@ class RegisterFragment: Fragment() {
             if (email != "" && pass != "") {
                 mainViewModel.register(email, pass)
             }
-
         }
-
         mainViewModel.currentUser.observe(viewLifecycleOwner) {
             if (it != null) {
                 findNavController().navigate(R.id.homeFragment)
